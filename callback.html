@@ -6,7 +6,7 @@
 <p><a id="link" href="#">Tap here if the app didn't open</a></p>
 <script>
   // Hands the Tesla OAuth code to the app (custom scheme). The code is single-use and short-lived.
-  var target = "teslamagictasks://callback" + window.location.search;
+  var target = "magictasks://callback" + window.location.search;
   document.getElementById("link").href = target;
   window.location.replace(target);
 </script>
