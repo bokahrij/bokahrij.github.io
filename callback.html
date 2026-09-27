@@ -6,7 +6,11 @@
 <p><a id="link" href="#">Tap here if the app didn't open</a></p>
 <script>
   // Hands the Tesla OAuth code to the app (custom scheme). The code is single-use and short-lived.
-  var target = "magictasks://callback" + window.location.search;
+  var params = new URLSearchParams(window.location.search);
+  var state = params.get("state") || "";
+  var target = state.indexOf("web-") === 0
+    ? "https://api.voltdeck.arlithtechnologies.ca/v1/auth/web-finish" + window.location.search
+    : (state.indexOf("vd-") === 0 ? "voltdeck://callback" : "magictasks://callback") + window.location.search;
   document.getElementById("link").href = target;
   window.location.replace(target);
 </script>
